@@ -18,7 +18,11 @@ venv/
 /data/*
 !/data/.gitkeep
 /outputs/*
+!/outputs/figures/
+/outputs/figures/*
 !/outputs/figures/.gitkeep
+!/outputs/tables/
+/outputs/tables/*
 !/outputs/tables/.gitkeep
 
 # OS
