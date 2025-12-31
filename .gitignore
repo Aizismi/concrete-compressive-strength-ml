@@ -15,8 +15,11 @@ venv/
 .ipynb_checkpoints/
 
 # Data and outputs
-/data/
-/outputs/
+/data/*
+!/data/.gitkeep
+/outputs/*
+!/outputs/figures/.gitkeep
+!/outputs/tables/.gitkeep
 
 # OS
 .DS_Store
