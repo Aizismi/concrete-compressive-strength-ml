@@ -39,20 +39,14 @@ from sklearn.ensemble import RandomForestRegressor
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+from xgboost import XGBRegressor
+
 import joblib
 
 # Optional plotting
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
-
-def try_import_xgboost():
-    try:
-        from xgboost import XGBRegressor
-        return XGBRegressor
-    except Exception:
-        return None
 
 
 def ensure_outputs_dir(out_dir: str):
@@ -201,26 +195,22 @@ def main():
         max_depth=None
     )
 
-    XGBRegressor = try_import_xgboost()
-    xgb = None
-    if XGBRegressor is not None:
-        xgb = XGBRegressor(
-            n_estimators=800,
-            learning_rate=0.05,
-            max_depth=4,
-            subsample=0.9,
-            colsample_bytree=0.9,
-            reg_lambda=1.0,
-            random_state=args.seed,
-            n_jobs=-1
-        )
+    xgb = XGBRegressor(
+        n_estimators=500,
+        learning_rate=0.05,
+        max_depth=4,
+        subsample=0.9,
+        colsample_bytree=0.9,
+        objective="reg:squarederror",
+        random_state=args.seed,
+        n_jobs=-1
+    )
 
     models = {
         "Ridge": ridge,
-        "RandomForest": rf
+        "RandomForest": rf,
+        "XGBoost": xgb
     }
-    if xgb is not None:
-        models["XGBoost"] = xgb
 
     # -----------------------------
     # Cross-validation setup
