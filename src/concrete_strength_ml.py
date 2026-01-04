@@ -3,7 +3,7 @@ Concrete Compressive Strength Prediction (Tabular ML)
 Models:
   - Ridge Regression (baseline)
   - Random Forest Regressor
-  - XGBoost Regressor (optional; recommended)
+  - XGBoost Regressor
 
 Dataset:
   Kaggle: Concrete Compressive Strength Data Set
@@ -350,7 +350,7 @@ def main():
             print(f"Saved feature importance plot to: {fi_plot_path}")
 
     print("\nDONE.\n")
-    print("Next step: paste your CV + test metrics here, and I will write Chapter 4 (Results & Discussion) properly.")
+    
 
 
 if __name__ == "__main__":
